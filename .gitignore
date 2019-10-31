@@ -13,3 +13,5 @@ google-cloud-logging-winston-*.tgz
 google-cloud-logging-bunyan-*.tgz
 **/coverage/*
 **/package-lock.json
+/.kokoro/
+.*
