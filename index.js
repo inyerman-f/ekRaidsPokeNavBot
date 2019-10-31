@@ -25,13 +25,14 @@ async function getRaidsData(url){
                 if((results[raid]['form']) === null){
                     let ahora =   moment().format();
                         ahora =  moment(ahora);
-                    let hatchtime =  moment(results[raid]['hatch_time']);
-                    let diffe =  await calculateMinutes(ahora,hatchtime);   
-                        diffe = Math.ceil(diffe);
+                    let hatchtime =  moment(results[raid]['hatches']);
+                    let diffe =  await calculateMinutes(ahora,hatchtime);
+                    diffe = Math.floor(Math.ceil(diffe) -2);
+
                     let gym_name = results[raid]['gym']['name'];
                     let tier = results[raid]['egg_tier'];
                    // console.log(results[raid]);
-                    let data = {boss_name: 'tbd', gym_name: gym_name, end_time: diffe, hatched: 0, type: 'egg',tier:tier};
+                    let data = {boss_name: 'tbd', gym_name: gym_name, end_time: diffe, hatched: 0, type: 'egg',raid_tier:tier};
                     disMsg = "$egg "+tier+' "'+gym_name+'" '+diffe+" mins";
                     console.log(data,disMsg);
                     await axios_push('https://elkhartraids.website/api/raid/create', data);
@@ -49,25 +50,26 @@ async function getRaidsData(url){
                     let ahora = moment().format();
                       ahora = moment(ahora);
                     let endTime = moment(results[raid]['ends']);
-                    let diffe =  await calculateMinutes(endTime,ahora);
-                        diffe = Math.ceil(diffe);
+                    let diffe =  await calculateMinutes(ahora,endTime);
+                        diffe = Math.floor(Math.ceil(diffe) -2);
+
                     let gym_name = results[raid]['gym']['name'];
                     let tier = results[raid]['form']['raid_boss_level'];
                     let boss_name = results[raid]['form']['name'];
                     //console.log(results[raid]);
-                    let data = {boss_name: boss_name, gym_name: gym_name, end_time: diffe, hatched: 0, type: 'raid',tier:tier};    
+                    let data = {boss_name: boss_name, gym_name: gym_name, end_time: diffe, hatched: 1, type: 'raid',raid_tier:tier};
                     disMsg = "$raid "+boss_name+' "'+gym_name+'" '+diffe+" mins";
                     console.log(data,disMsg);
                     await axios_push('https://elkhartraids.website/api/raid/create', data);
                     await Hook.setPayload({
                         "content": disMsg
-                        })
+                        });
                     await Hook.fire()
                         .then(response_object => {
                         })
                         .catch(error => {
                         throw error;
-                        })
+                        });
 
                 }     
 
@@ -88,7 +90,7 @@ async function axios_push(url, data){
            // console.log(`statusCode: ${res.status}`,data);
            console.log(res.status,data);
         }).catch(error => {
-        console.error(error.response.status);
+        console.error(error.response);
     });
 }module.exports.axios_push = async function(url,data){
     await axios_push(url,data);
@@ -104,6 +106,7 @@ async function calculateMinutes(startDate,endDate)
    return minutes;
 }
 getRaidsData('https://api.pokenavbot.com/raids/v1/stream/?lookback=2');
+
 var minutes = 2, the_interval = minutes * 60 * 1000;
 setInterval(function() {
   //console.log("I am doing my 5 minutes check");
