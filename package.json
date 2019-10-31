@@ -1,13 +1,13 @@
 {
-  "name": "test",
-  "version": "1.0.0",
+  "name": "ekraids-pokenav-listener",
+  "version": "0.0.0",
   "description": "test",
   "main": "ekRaidsPokeNavIntegration.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Inyerman Fonseca",
+  "license": "GPL-2.0",
   "dependencies": {
     "axios": "^0.19.0",
     "express": "^4.17.1",
@@ -15,5 +15,23 @@
     "moment": "^2.24.0",
     "moments": "0.0.2",
     "server.js": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inyerman-f/ekRaidsPokeNavBot.git"
+  },
+  "keywords": [
+    "PokeNav",
+    "Integration",
+    "tool",
+    "pokemon",
+    "go",
+    "pogo",
+    "discord"
+  ],
+  "bugs": {
+    "url": "https://github.com/inyerman-f/ekRaidsPokeNavBot/issues"
+  },
+  "homepage": "https://github.com/inyerman-f/ekRaidsPokeNavBot#readme"
 }
