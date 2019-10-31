@@ -49,7 +49,7 @@ async function getRaidsData(url){
                     let ahora = moment().format();
                       ahora = moment(ahora);
                     let endTime = moment(results[raid]['ends']);
-                    let diffe =  await calculateMinutes(ahora,endTime);
+                    let diffe =  await calculateMinutes(endTime,ahora);
                         diffe = Math.ceil(diffe);
                     let gym_name = results[raid]['gym']['name'];
                     let tier = results[raid]['form']['raid_boss_level'];
