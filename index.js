@@ -4,7 +4,7 @@ const
     pokeNavListener = require('./ekRaidsPokeNavIntegration');
 
 
-       pokeNavListener.startPokeNavListener();
+    pokeNavListener.startPokeNavListener();
 
 
 

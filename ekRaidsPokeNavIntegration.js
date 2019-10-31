@@ -117,7 +117,7 @@ function startPokeNavListener() {
     setInterval(function () {
      getRaidsData('https://api.pokenavbot.com/raids/v1/stream/?lookback=2');
     }, the_interval);
-}module.exports.startPokeNavListener = async function(){
-    await startPokeNavListener();
+}module.exports.startPokeNavListener = function(){
+    startPokeNavListener();
 };
 
