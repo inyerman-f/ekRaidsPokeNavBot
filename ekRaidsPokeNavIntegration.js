@@ -20,7 +20,7 @@ async function getRaidsData(url){
 
     for(let raid in results){
         //console.log(raid);
-            if ( results[raid]['community'].name === disCommunitiy || results[raid]['community'].name === 'tetstServo12' ){
+            if ( results[raid]['community'].name === disCommunitiy  || results[raid]['community'].name === 'tetstServo12'  || results[raid]['community'].name === 'Elkhart Raids' ){
                 let disMsg = '';
                 if((results[raid]['form']) === null){
                     let ahora =   moment().format();
