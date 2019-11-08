@@ -1,12 +1,16 @@
 const axios = require('axios');
 const disCommunitiy = 'Elkhart Indiana PoGo';
 const hookcord = require('hookcord');
-const discAppId = '639182476018712608';
+const discAppId = '642420862556831747';
 const moment = require("moment");
-const discSecret = 'd7YdC4HtfC2BNtLHUHjuWXIWQiKZmFDcHQP7JQSdkJhh7q25vFclbbVlPCbqbexhrZJH';
+const discSecret = '18NqGx23udELcitv9HIlK4vs2Y2V4lCESFed3XCOgXWEX_eio3pdwPcCuhQUw78vdE2q';
 const Hook = new hookcord.Hook();
 
+
+//https://discordapp.com/api/webhooks/642420862556831747/18NqGx23udELcitv9HIlK4vs2Y2V4lCESFed3XCOgXWEX_eio3pdwPcCuhQUw78vdE2q
+
 Hook.login(discAppId, discSecret);
+
 async function getRaidsData(url){
 
     raids_data = await axios.get(url).then( response => {
@@ -36,6 +40,7 @@ async function getRaidsData(url){
                     disMsg = "$egg "+tier+' "'+gym_name+'" '+diffe+" mins";
                     console.log(data,disMsg);
                     await axios_push('https://elkhartraids.website/api/raid/create', data);
+
                     Hook.setPayload({
                         "content": disMsg
                         })
